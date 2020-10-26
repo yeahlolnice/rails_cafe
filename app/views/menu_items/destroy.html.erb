@@ -1,0 +1,8 @@
+<h1>Delete: <%= @item.item %></h1>
+
+<form action="<%= menu_item_path(@item) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+    <input type="hidden" name="_method" value="DELETE">
+    
+    <button>Update: <%= @item.item %></button>
+</form>

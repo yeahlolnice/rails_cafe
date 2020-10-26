@@ -1,0 +1,19 @@
+
+
+<%= form_with model: @item, local: true do |f| %>
+    <div>
+        <%= f.label :item %>
+        <%= f.text_field :item %>
+    </div>
+    <div>
+        <%= f.label :price %>
+        <%= f.number_field :price, min: 0.50, step: 0.01 %>      
+    </div>
+    <div>
+        <%= f.label :quantity %>     
+        <%= f.number_field :quantity, min: 1 %>
+    </div>
+    <div>
+        <%= f.submit "Edit" %>
+    </div>
+<% end %>
