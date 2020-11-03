@@ -7,7 +7,7 @@ class CafeController < ApplicationController
 
     def order
         menu_row = @menu.find_by_item(params[:id])
-        render json: menu_row[:price]
+        redirect_to menu_item_path(menu_row)
     end
 
     def set_menu
