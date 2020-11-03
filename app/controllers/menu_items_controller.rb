@@ -1,8 +1,10 @@
 class MenuItemsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:buy]
   before_action :authenticate_user!, except: [:buy]
-  before_action :check_roles, except: [:buy]
-before_action :set_menu_item, only: [:show, :update, :edit, :destroy, :buy]
+  before_action :check_roles, except: [:buy, :index]
+  before_action :set_item, only: [:show, :update, :edit, :destroy, :buy]
+  before_action :set_menu, only: [:show, :update, :edit, :new]
+
   def index
     @items = MenuItem.all.order(:item)
   end
@@ -79,8 +81,11 @@ before_action :set_menu_item, only: [:show, :update, :edit, :destroy, :buy]
     params.require(:menu_item).permit(:item, :price, :quantity, :image, menu_ids: [])
   end 
 
-  def set_menu_item
+  def set_menu
     @menus = Menu.all
+  end
+
+  def set_item
     @item = MenuItem.find(params[:id])
   end
 end

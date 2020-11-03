@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Menu.destroy_all
 menu = Menu.create({title: "lunch"})
 
 items = [
@@ -16,3 +17,6 @@ items = [
 MenuItem.destroy_all
 
 MenuItem.create!(items)
+
+user = User.create!({email: "mattwilly98@hotmail.com", password: "matt123"})
+user.add_role(:admin) 
