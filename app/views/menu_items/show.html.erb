@@ -1,6 +1,7 @@
 <h1><%= @item[:item] %></h1>
-<!-- <p><#%=# image_tag @item.image, width: 200 %></p> -->
-<p><%= cl_image_tag(@item.image.key, cloud_name: ENV['CLOUDINARY_CLOUDNAME'], :width=>"100", :crop=>"scale") %></p>
+<% if @item.image.attached? %>
+    <p><%= cl_image_tag(@item.image.key, cloud_name: ENV['CLOUDINARY_CLOUDNAME'], :width=>"100", :crop=>"scale") %></p>
+<% end %>
 <h3>$<%= "%.2f" % @item[:price] %></h3>
 <p>Quantity: <%= @item[:quantity].to_i %></p>
 <hr>
